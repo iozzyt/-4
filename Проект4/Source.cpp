@@ -18,7 +18,7 @@ public:
 		intpart = 0;
 		res = 0;
 	}
-	bool operator<(Number num)
+	bool operator<(Number num)		//инициализация оператора
 	{
 		return numb < num.numb;
 	}
@@ -47,40 +47,40 @@ public:
 		fracpart = num - (int)num;
 		intpart = (int)num;
 	}
-	void getNumber()	//вывод перменной класса номер
+	float getNumber()	//вывод перменной класса номер
 	{
-		cout << "Number: " << numb << endl;
+		return numb;
 	}
-	void invNumber()		//метод инвертирования знака
+	float invNumber()		//метод инвертирования знака
 	{
 		res = numb*(-1);
-		cout << "invNumber: " << res << endl;
+		return res;
 
 	}
-	void getlastres()		//метод вывода последнего результата
+	float getlastres()		//метод вывода последнего результата
 	{
 		return res;
 	}
-	void getfracpart()		//output frac part
+	float getfracpart()		//output frac part
 	{
 		return fracpart;
 	}
-	void getintpart()		//output int part
+	int getintpart()		//output int part
 	{
 		return intpart;
 	}
-	void powerNumber(int power)		//возведение объекта в степень
+	float powerNumber(int power)		//возведение объекта в степень
 	{
 		res = pow(numb, power);
 		return res;
 	}
-	void xNumber(float x)		//умножение объекта на число
+	float xNumber(float x)		//умножение объекта на число
 	{
 		res = x*numb;
 		return res;
 	}
 
-	void plusNumber(float x)		//прибавление числа к объекту
+	float plusNumber(float x)		//прибавление числа к объекту
 	{
 		res = numb + x;
 		return res;
@@ -91,6 +91,8 @@ public:
 
 	}
 };
+
+//шаблон двоичного дерева
 
 template<class Item>
 class tree
@@ -117,7 +119,7 @@ private:
 			else
 				add(curr->right, item);
 		}
-		static node* deepcopy(node* from)
+		static node* deepcopy(node* from)		
 		{
 			if (!from)return nullptr;
 			node * res = new node(from->item);
@@ -136,7 +138,7 @@ private:
 			}
 		}
 
-		static void clear(node*&curr)
+		static void clear(node*&curr)		//удаление
 		{
 			if (curr)
 			{
@@ -155,18 +157,18 @@ public:
 	{
 		head = node::deepcopy(t.head);
 	}
-	tree operator=(tree t)
+	tree operator=(tree t)		//перегрузка оператора присваивания
 	{
 		head = node::deepcopy(t.head);
 		return t;
 	}
-	friend std::ostream& operator<<(std::ostream& os, tree t)
+	friend std::ostream& operator<<(std::ostream& os, tree t)		
 	{
 		node::print(t.head, os);
 		return os;
 	}
 
-	void add(Item item = Item())
+	void add(Item item = Item())		//добавление элемента
 	{
 		node::add(head, item);
 	}
@@ -175,7 +177,7 @@ public:
 		node::clear(head);
 		head = nullptr;
 	}
-	~tree()
+	~tree()		//деструктор
 	{
 		clear();
 	}
@@ -187,21 +189,34 @@ int main()
 {	
 	Number obj1;
 	obj1 = 12.7;
-	obj1.getNumber();
-	obj1.getNumber();
-	obj1.getintpart();
-	obj1.getfracpart();
-	obj1.powerNumber(2);
+	cout << obj1.getNumber() << endl;
+	cout << obj1.getNumber() << endl;
+	cout << obj1.getintpart() << endl;
+	cout << obj1.getfracpart() << endl;	
+	cout << obj1.powerNumber(2) << endl;	
 	tree<Number> obj;
-	obj.add(10);
+	int n;
+	float a;
+
+	cout << "write n elements of tree ";
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{	
+		cin >> a;
+		obj.add(a);
+	}
+	tree<Number> tr = obj;
+	/*obj.add(10);
 	obj.add(9);
 	obj.add(15);
 	obj.add(10);
 	obj.add(9);
-	obj.add(15);
+	obj.add(15);*/
 	cout << obj;
+	cout << tr;
 	cout << "press enter for close" << endl;
 	getchar();
-	//system("pause");
+	getchar();
+//	system("pause");
 	return 0;
 }
