@@ -4,21 +4,21 @@
 
 using namespace std;
 
-class Number		//класс number для хранения десятичных чисел 
+class Number		//ГЄГ«Г Г±Г± number Г¤Г«Гї ГµГ°Г Г­ГҐГ­ГЁГї Г¤ГҐГ±ГїГІГЁГ·Г­Г»Гµ Г·ГЁГ±ГҐГ« 
 {
 private:
 	float fracpart, numb;
 	int intpart;
 public:
 	float res;
-	Number()		//конструктор по умолчанию
+	Number()		//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ
 	{
 		numb = 0;
 		fracpart = 0;
 		intpart = 0;
 		res = 0;
 	}
-	bool operator<(Number num)		//инициализация оператора
+	bool operator<(Number num)		//ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї Г®ГЇГҐГ°Г ГІГ®Г°Г 
 	{
 		return numb < num.numb;
 	}
@@ -27,7 +27,7 @@ public:
 		return os << num.numb;
 	}
 
-	Number(float num)		//конструктор инициализации
+	Number(float num)		//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГЁ
 	{
 		setNumber(num);
 	}
@@ -41,23 +41,23 @@ public:
 	}
 
 
-	void setNumber(float num)		//установка класса
+	void setNumber(float num)		//ГіГ±ГІГ Г­Г®ГўГЄГ  ГЄГ«Г Г±Г±Г 
 	{
 		numb = num;
 		fracpart = num - (int)num;
 		intpart = (int)num;
 	}
-	float getNumber()	//вывод перменной класса номер
+	float getNumber()	//ГўГ»ГўГ®Г¤ ГЇГҐГ°Г¬ГҐГ­Г­Г®Г© ГЄГ«Г Г±Г±Г  Г­Г®Г¬ГҐГ°
 	{
 		return numb;
 	}
-	float invNumber()		//метод инвертирования знака
+	float invNumber()		//Г¬ГҐГІГ®Г¤ ГЁГ­ГўГҐГ°ГІГЁГ°Г®ГўГ Г­ГЁГї Г§Г­Г ГЄГ 
 	{
 		res = numb*(-1);
 		return res;
 
 	}
-	float getlastres()		//метод вывода последнего результата
+	float getlastres()		//Г¬ГҐГІГ®Г¤ ГўГ»ГўГ®Г¤Г  ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ® Г°ГҐГ§ГіГ«ГјГІГ ГІГ 
 	{
 		return res;
 	}
@@ -69,30 +69,30 @@ public:
 	{
 		return intpart;
 	}
-	float powerNumber(int power)		//возведение объекта в степень
+	float powerNumber(int power)		//ГўГ®Г§ГўГҐГ¤ГҐГ­ГЁГҐ Г®ГЎГєГҐГЄГІГ  Гў Г±ГІГҐГЇГҐГ­Гј
 	{
 		res = pow(numb, power);
 		return res;
 	}
-	float xNumber(float x)		//умножение объекта на число
+	float xNumber(float x)		//ГіГ¬Г­Г®Г¦ГҐГ­ГЁГҐ Г®ГЎГєГҐГЄГІГ  Г­Г  Г·ГЁГ±Г«Г®
 	{
 		res = x*numb;
 		return res;
 	}
 
-	float plusNumber(float x)		//прибавление числа к объекту
+	float plusNumber(float x)		//ГЇГ°ГЁГЎГ ГўГ«ГҐГ­ГЁГҐ Г·ГЁГ±Г«Г  ГЄ Г®ГЎГєГҐГЄГІГі
 	{
 		res = numb + x;
 		return res;
 	}
 
-	~Number()		//деструктор
+	~Number()		//Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°
 	{
 
 	}
 };
 
-//шаблон двоичного дерева
+//ГёГ ГЎГ«Г®Г­ Г¤ГўГ®ГЁГ·Г­Г®ГЈГ® Г¤ГҐГ°ГҐГўГ 
 
 template<class Item>
 class tree
@@ -138,7 +138,7 @@ private:
 			}
 		}
 
-		static void clear(node*&curr)		//удаление
+		static void clear(node*&curr)		//ГіГ¤Г Г«ГҐГ­ГЁГҐ
 		{
 			if (curr)
 			{
@@ -157,7 +157,7 @@ public:
 	{
 		head = node::deepcopy(t.head);
 	}
-	tree operator=(tree t)		//перегрузка оператора присваивания
+	tree operator=(tree t)		//ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г®ГЇГҐГ°Г ГІГ®Г°Г  ГЇГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГї
 	{
 		head = node::deepcopy(t.head);
 		return t;
@@ -168,7 +168,7 @@ public:
 		return os;
 	}
 
-	void add(Item item = Item())		//добавление элемента
+	void add(Item item = Item())		//Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ 
 	{
 		node::add(head, item);
 	}
@@ -177,7 +177,7 @@ public:
 		node::clear(head);
 		head = nullptr;
 	}
-	~tree()		//деструктор
+	~tree()		//Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°
 	{
 		clear();
 	}
@@ -220,3 +220,5 @@ int main()
 //	system("pause");
 	return 0;
 }
+
+// РџСЂРѕРіСЂР°РјРјР° СЂР°Р±РѕС‚Р°РµС‚. РўСЂРµР±СѓРµРјС‹Рµ РєР»Р°СЃСЃС‹ СЂРµР°Р»РёР·РѕРІР°РЅС‹.
